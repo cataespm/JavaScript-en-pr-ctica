@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 1</title>
+  </head>
+
+  <body>
+    <div>
+      <div style="width: 40%; margin: 0 auto">
+        <h2>Escríbenos !!!</h2>
+        <div class="resultado" style="color: green; font-style: italic"></div>
+        <form id="formulario">
+          <div>
+            <div style="display: flex; flex-direction: column">
+              <label> Nombre completo </label>
+              <input id="nombre" type="text" />
+              <p class="errorNombre" style="color: red; font-style: italic"></p>
+            </div>
+            <div style="display: flex; flex-direction: column">
+              <label> Asunto </label>
+              <input id="asunto" type="text" />
+              <p class="errorAsunto" style="color: red; font-style: italic"></p>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <label> Mensaje </label>
+            <textarea id="mensaje"></textarea>
+            <p class="errorMensaje" style="color: red; font-style: italic"></p>
+          </div>
+          <div>
+            <button id="botton" type="submit">Envíar mensaje</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!---- script ---->
+    <script>
+      let form = document.getElementById("formulario");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const nombre = document.getElementById("nombre");
+        const asunto = document.getElementById("asunto");
+        const mensaje = document.getElementById("mensaje");
+        const regNom = /[a-zA-Z]/;
+        const regTel = /\d+/;
+        const regCorreo = /^([a-z])([a-z]|[0-9])+(@)([a-z]){3,}.((com)|(cl))/i;
+
+        const nombrevalido = regNom.test(nombre.value);
+
+        if (nombrevalido) {
+          document.querySelector(".errorNombre").innerText = "Nombre Inválido";
+          console.log("error");
+        } else {
+          console.log(nombrevalido);
+        }
+      });
+    </script>
+  </body>
+</html>
